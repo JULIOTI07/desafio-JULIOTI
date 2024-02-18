@@ -1,31 +1,74 @@
-// Desafio Classificador de Nível de Herói
+// Calculadora de partidas Rankeadas //
 
-// Defina o nome e a quantidade de experiência (XP) do herói
-let nome = "LINK";
-// Exemplo de XP, você pode alterar esse valor
-let xp = 10;
+// Ultilizando 3 solcuções para o programa proposto //
 
-// Utilizando uma estrutura de decisão para determinar o nível do herói com base na XP
-let nivel;
+// Opção 1: Utilizando estrutura de decisão if-else
 
-if (xp < 1000) {
-    nivel = "Ferro";
-} else if (xp >= 1001 && xp <= 2000) {
-    nivel = "Bronze";
-} else if (xp >= 2001 && xp <= 5000) {
-    nivel = "Prata";
-} else if (xp >= 5001 && xp <= 7000) {
-    nivel = "Ouro";
-} else if (xp >= 7001 && xp <= 8000) {
-    nivel = "Platina";
-} else if (xp >= 8001 && xp <= 9000) {
-    nivel = "Ascendente";
-} else if (xp >= 9001 && xp <= 10000) {
-    nivel = "Imortal";
-} else {
-    nivel = "Radiante";
+ function calcularNivel(vitorias, derrotas) {
+    let saldoVitorias = vitorias - derrotas;
+    let nivelMap = {
+        "Ferro": vitorias < 10,
+        "Bronze": vitorias >= 10 && vitorias <= 20,
+        "Prata": vitorias >= 21 && vitorias <= 50,
+        "Ouro": vitorias >= 51 && vitorias <= 80,
+        "Diamante": vitorias >= 81 && vitorias <= 90,
+        "Lendário": vitorias >= 91 && vitorias <= 100,
+        "Imortal": vitorias >= 101
+    };
+
+    let nivel = Object.keys(nivelMap).find(key => nivelMap[key]);
+
+    console.log(`O Herói tem de saldo de ${saldoVitorias} está no nível de ${nivel}`);
 }
 
-// Exibir mensagem nome do herói e seu nível
-console.log("O Herói de nome " + nome + " está no nível de " + nivel);
+// Opção 2: Utilizando um switch-case
+
+ function calcularNivel(vitorias, derrotas) {
+    let saldoVitorias = vitorias - derrotas;
+    let nivel;
+
+    switch (true) {
+        case vitorias < 10:
+            nivel = "Ferro";
+            break;
+        case vitorias >= 10 && vitorias <= 20:
+            nivel = "Bronze";
+            break;
+        case vitorias >= 21 && vitorias <= 50:
+            nivel = "Prata";
+            break;
+        case vitorias >= 51 && vitorias <= 80:
+            nivel = "Ouro";
+            break;
+        case vitorias >= 81 && vitorias <= 90:
+            nivel = "Diamante";
+            break;
+        case vitorias >= 91 && vitorias <= 100:
+            nivel = "Lendário";
+            break;
+        default:
+            nivel = "Imortal";
+    }
+
+    console.log(`O Herói tem de saldo de ${saldoVitorias} está no nível de ${nivel}`);
+}
+
+// Opção 3: Utilizando um objeto de mapeamento
+
+ function calcularNivel(vitorias, derrotas) {
+    let saldoVitorias = vitorias - derrotas;
+    let nivelMap = {
+        "Ferro": vitorias < 10,
+        "Bronze": vitorias >= 10 && vitorias <= 20,
+        "Prata": vitorias >= 21 && vitorias <= 50,
+        "Ouro": vitorias >= 51 && vitorias <= 80,
+        "Diamante": vitorias >= 81 && vitorias <= 90,
+        "Lendário": vitorias >= 91 && vitorias <= 100,
+        "Imortal": vitorias >= 101
+    };
+
+    let nivel = Object.keys(nivelMap).find(key => nivelMap[key]);
+
+    console.log(`O Herói tem de saldo de ${saldoVitorias} está no nível de ${nivel}`);
+}
 
